@@ -21,7 +21,8 @@
   #include <Arduino.h>
   // -------- Define debugging macros ----- 
   // Call DINIT once in setup().
-  #define DINIT(baudRate)	initDebug(baudRate);
+  // This macro does not call a function to reduce memory usage. 
+  #define DINIT(baudRate) if(!Serial.available()) { Serial.begin(9600);while (!Serial);}
 
   // Print a debugging msg, if the moduleTag != 0 (non final carriage return)
   #define DPRINT(moduleTag, msg)    if(moduleTag!=0) Serial.print(F(msg)); AA  

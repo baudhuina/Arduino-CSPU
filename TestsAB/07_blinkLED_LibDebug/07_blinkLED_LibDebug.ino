@@ -1,6 +1,6 @@
 
 
-#define DEBUG  // This is the main switch for the debugging code. 
+//define DEBUG  // This is the main switch for the debugging code. 
                // Comment out to remove debugging code. 
 #include <cansat_debug.h> // Always include, even if DEBUG is not defined!
                           // Always include AFTER definition of DEBUG
@@ -27,6 +27,7 @@ void loop() {
 
   toggleLED();
   delay(1000);  // wait for 1 sec
+  
   DDELAY(DBG_LOOP, 1000); // wait for 1 additional sec if debugging
   DPRINTLN(DBG_LOOP, "**loop out **");
 }

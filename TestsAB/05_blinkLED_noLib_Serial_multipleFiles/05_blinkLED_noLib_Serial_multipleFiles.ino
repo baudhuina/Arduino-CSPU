@@ -1,5 +1,5 @@
 
-#define DEBUG  // This is the main switch for the debugging code. 
+//define DEBUG  // This is the main switch for the debugging code. 
 #include "cansat_debug.h" // Always include, even if DEBUG is not defined!
 #ifdef DEBUG
   // -------- Select which part to debug. 0=off, 1=on. 
