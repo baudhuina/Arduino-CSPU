@@ -24,11 +24,19 @@
   // This macro does not call a function to reduce memory usage. 
   #define DINIT(baudRate) if(!Serial.available()) { Serial.begin(9600);while (!Serial);}
 
-  // Print a debugging msg, if the moduleTag != 0 (non final carriage return)
-  #define DPRINT(moduleTag, msg)    if(moduleTag!=0) Serial.print(F(msg)); AA  
+  // Print a debugging STRING msg, if the moduleTag != 0 (non final carriage return)
+  // The string is not stored in dynamic memory 
+  #define DPRINTS(moduleTag, msg)    if(moduleTag!=0) Serial.print(F(msg)); 
 
-  // Print a debugging msg, if the moduleTag != 0 (with final carriage return)
-  #define DPRINTLN(moduleTag, msg)  if(moduleTag!=0) Serial.println(F(msg)); 
+  // Print a debugging STRING msg, if the moduleTag != 0 (with final carriage return)
+  // The string is not stored in dynamic memory 
+  #define DPRINTSLN(moduleTag, msg)  if(moduleTag!=0) Serial.println(F(msg)); 
+
+  // Print a debugging NUMERIC value, if the moduleTag != 0 (non final carriage return)
+  #define DPRINT(moduleTag, numValue)    if(moduleTag!=0) Serial.print(numValue);  
+
+  // Print a debugging NUMERIC value, if the moduleTag != 0 (with final carriage return)
+  #define DPRINTLN(moduleTag, numValue)  if(moduleTag!=0) Serial.println(numValue); 
 
   // Wait for x msec if the moduleTag != 0  is active.
   #define DDELAY(moduleTag,durationInMsec)    if(moduleTag!=0) delay(durationInMsec);
@@ -42,8 +50,10 @@
 #else
   // Define all macros as blank lines.
   #define DINIT(baudRate)
-  #define DPRINT(moduleTag, msg)   
-  #define DPRINTLN(moduleTag, msg)  
+  #define DPRINTS(moduleTag, msg)   
+  #define DPRINTSLN(moduleTag, msg) 
+  #define DPRINT(moduleTag, numValue)   
+  #define DPRINTLN(moduleTag, numValue)  
   #define DDELAY(moduleTag,durationInMsec)        
   #define DFREE_RAM(moduleTag)     
 #endif
